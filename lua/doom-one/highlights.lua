@@ -3,6 +3,9 @@ local M = {}
 function M.get(palette, opts)
   local config = opts or {}
   local bg = config.transparent and "NONE" or palette.bg
+  local bg_alt = config.transparent and "NONE" or palette.base2
+  local bg_alt2 = config.transparent and "NONE" or palette.base1
+  local bg_alt3 = config.transparent and "NONE" or palette.base3
 
   return {
     Normal = { fg = palette.fg, bg = bg },
@@ -43,24 +46,24 @@ function M.get(palette, opts)
     Error = { fg = palette.red, bold = true },
     Todo = { fg = palette.magenta, bold = true },
 
-    CursorLine = { bg = palette.base2 },
+    CursorLine = { bg = bg_alt },
     CursorLineNr = { fg = palette.fg },
     LineNr = { fg = palette.base5 },
-    Visual = { bg = palette.base3 },
+    Visual = { bg = bg_alt3 },
     Search = { fg = palette.base0, bg = palette.yellow },
     IncSearch = { fg = palette.base0, bg = palette.orange },
     MatchParen = { fg = palette.cyan, bold = true },
-    ColorColumn = { bg = palette.base2 },
+    ColorColumn = { bg = bg_alt },
     VertSplit = { fg = palette.base4 },
-    StatusLine = { fg = palette.fg, bg = palette.base2 },
-    StatusLineNC = { fg = palette.base6, bg = palette.base1 },
-    TabLine = { fg = palette.base6, bg = palette.base2 },
-    TabLineSel = { fg = palette.fg, bg = palette.base1 },
-    TabLineFill = { fg = palette.base6, bg = palette.base1 },
+    StatusLine = { fg = palette.fg, bg = bg_alt },
+    StatusLineNC = { fg = palette.base6, bg = bg_alt2 },
+    TabLine = { fg = palette.base6, bg = bg_alt },
+    TabLineSel = { fg = palette.fg, bg = bg_alt2 },
+    TabLineFill = { fg = palette.base6, bg = bg_alt2 },
 
-    Pmenu = { fg = palette.fg, bg = palette.base2 },
+    Pmenu = { fg = palette.fg, bg = bg_alt },
     PmenuSel = { fg = palette.base0, bg = palette.blue },
-    PmenuSbar = { bg = palette.base3 },
+    PmenuSbar = { bg = bg_alt3 },
     PmenuThumb = { bg = palette.base5 },
 
     DiagnosticError = { fg = palette.red },
