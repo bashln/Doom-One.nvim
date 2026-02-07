@@ -66,6 +66,11 @@ function M.get(palette, opts)
     PmenuSbar = { bg = bg_alt3 },
     PmenuThumb = { bg = palette.base5 },
 
+    NormalFloat = { fg = palette.fg, bg = bg_alt },
+    FloatBorder = { fg = palette.base4, bg = bg_alt },
+    FloatTitle = { fg = palette.fg, bg = bg_alt },
+    WinSeparator = { fg = palette.base4 },
+
     DiagnosticError = { fg = palette.red },
     DiagnosticWarn = { fg = palette.yellow },
     DiagnosticInfo = { fg = palette.blue },
@@ -79,6 +84,41 @@ function M.get(palette, opts)
     ["@function"] = { link = "Function" },
     ["@keyword"] = { link = "Keyword" },
     ["@type"] = { link = "Type" },
+
+    TelescopeNormal = { fg = palette.fg, bg = bg_alt },
+    TelescopeBorder = { fg = palette.base4, bg = bg_alt },
+    TelescopePromptNormal = { fg = palette.fg, bg = bg_alt },
+    TelescopePromptBorder = { fg = palette.base4, bg = bg_alt },
+    TelescopeResultsNormal = { fg = palette.fg, bg = bg_alt },
+    TelescopeResultsBorder = { fg = palette.base4, bg = bg_alt },
+    TelescopePreviewNormal = { fg = palette.fg, bg = bg_alt },
+    TelescopePreviewBorder = { fg = palette.base4, bg = bg_alt },
+    TelescopeTitle = { fg = palette.magenta, bold = true },
+    TelescopePromptTitle = { fg = palette.blue, bold = true },
+    TelescopeResultsTitle = { fg = palette.green, bold = true },
+    TelescopePreviewTitle = { fg = palette.yellow, bold = true },
+    TelescopeMatching = { fg = palette.orange, bold = true },
+    TelescopeSelection = { fg = palette.fg, bg = bg_alt3 },
+    TelescopeSelectionCaret = { fg = palette.cyan, bold = true },
+
+    OilDir = { link = "Directory" },
+    OilFile = { link = "Normal" },
+    OilHidden = { link = "Comment" },
+    OilLink = { link = "Underlined" },
+    OilTitle = { link = "Title" },
+    OilPreview = { link = "NormalFloat" },
+
+    FzfLuaNormal = { fg = palette.fg, bg = bg_alt },
+    FzfLuaBorder = { fg = palette.base4, bg = bg_alt },
+    FzfLuaTitle = { fg = palette.magenta, bold = true },
+    FzfLuaHeader = { fg = palette.violet },
+    FzfLuaPath = { fg = palette.blue },
+    FzfLuaCursorLine = { fg = palette.fg, bg = bg_alt3 },
+    FzfLuaCursorLineNr = { fg = palette.cyan },
+    FzfLuaSearch = { fg = palette.orange },
+    FzfLuaPrompt = { fg = palette.green },
+    FzfNormal = { fg = palette.fg, bg = bg_alt },
+    FzfBorder = { fg = palette.base4, bg = bg_alt },
   }
 end
 
