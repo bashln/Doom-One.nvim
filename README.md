@@ -6,7 +6,7 @@ Tema inspirado no Doom One do Doom Emacs, convertido para Neovim.
 
 ```lua
 -- lazy.nvim
-{ "seu-usuario/Doom-One.nvim" }
+{ "bashln/Doom-One.nvim" }
 ```
 
 ### LazyVim
@@ -16,7 +16,7 @@ Crie ou edite `lua/plugins/colorscheme.lua`:
 ```lua
 return {
   {
-    "seu-usuario/Doom-One.nvim",
+    "bashln/Doom-One.nvim",
     lazy = false,
     priority = 1000,
     opts = {
