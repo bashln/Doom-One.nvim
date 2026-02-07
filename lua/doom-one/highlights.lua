@@ -3,6 +3,9 @@ local M = {}
 function M.get(palette, opts)
   local config = opts or {}
   local bg = config.transparent and "NONE" or palette.bg
+  local bg_alt = config.transparent and "NONE" or palette.base2
+  local bg_alt2 = config.transparent and "NONE" or palette.base1
+  local bg_alt3 = config.transparent and "NONE" or palette.base3
 
   return {
     Normal = { fg = palette.fg, bg = bg },
@@ -43,25 +46,30 @@ function M.get(palette, opts)
     Error = { fg = palette.red, bold = true },
     Todo = { fg = palette.magenta, bold = true },
 
-    CursorLine = { bg = palette.base2 },
+    CursorLine = { bg = bg_alt },
     CursorLineNr = { fg = palette.fg },
     LineNr = { fg = palette.base5 },
-    Visual = { bg = palette.base3 },
+    Visual = { bg = bg_alt3 },
     Search = { fg = palette.base0, bg = palette.yellow },
     IncSearch = { fg = palette.base0, bg = palette.orange },
     MatchParen = { fg = palette.cyan, bold = true },
-    ColorColumn = { bg = palette.base2 },
+    ColorColumn = { bg = bg_alt },
     VertSplit = { fg = palette.base4 },
-    StatusLine = { fg = palette.fg, bg = palette.base2 },
-    StatusLineNC = { fg = palette.base6, bg = palette.base1 },
-    TabLine = { fg = palette.base6, bg = palette.base2 },
-    TabLineSel = { fg = palette.fg, bg = palette.base1 },
-    TabLineFill = { fg = palette.base6, bg = palette.base1 },
+    StatusLine = { fg = palette.fg, bg = bg_alt },
+    StatusLineNC = { fg = palette.base6, bg = bg_alt2 },
+    TabLine = { fg = palette.base6, bg = bg_alt },
+    TabLineSel = { fg = palette.fg, bg = bg_alt2 },
+    TabLineFill = { fg = palette.base6, bg = bg_alt2 },
 
-    Pmenu = { fg = palette.fg, bg = palette.base2 },
+    Pmenu = { fg = palette.fg, bg = bg_alt },
     PmenuSel = { fg = palette.base0, bg = palette.blue },
-    PmenuSbar = { bg = palette.base3 },
+    PmenuSbar = { bg = bg_alt3 },
     PmenuThumb = { bg = palette.base5 },
+
+    NormalFloat = { fg = palette.fg, bg = bg_alt },
+    FloatBorder = { fg = palette.base4, bg = bg_alt },
+    FloatTitle = { fg = palette.fg, bg = bg_alt },
+    WinSeparator = { fg = palette.base4 },
 
     DiagnosticError = { fg = palette.red },
     DiagnosticWarn = { fg = palette.yellow },
@@ -76,6 +84,41 @@ function M.get(palette, opts)
     ["@function"] = { link = "Function" },
     ["@keyword"] = { link = "Keyword" },
     ["@type"] = { link = "Type" },
+
+    TelescopeNormal = { fg = palette.fg, bg = bg_alt },
+    TelescopeBorder = { fg = palette.base4, bg = bg_alt },
+    TelescopePromptNormal = { fg = palette.fg, bg = bg_alt },
+    TelescopePromptBorder = { fg = palette.base4, bg = bg_alt },
+    TelescopeResultsNormal = { fg = palette.fg, bg = bg_alt },
+    TelescopeResultsBorder = { fg = palette.base4, bg = bg_alt },
+    TelescopePreviewNormal = { fg = palette.fg, bg = bg_alt },
+    TelescopePreviewBorder = { fg = palette.base4, bg = bg_alt },
+    TelescopeTitle = { fg = palette.magenta, bold = true },
+    TelescopePromptTitle = { fg = palette.blue, bold = true },
+    TelescopeResultsTitle = { fg = palette.green, bold = true },
+    TelescopePreviewTitle = { fg = palette.yellow, bold = true },
+    TelescopeMatching = { fg = palette.orange, bold = true },
+    TelescopeSelection = { fg = palette.fg, bg = bg_alt3 },
+    TelescopeSelectionCaret = { fg = palette.cyan, bold = true },
+
+    OilDir = { link = "Directory" },
+    OilFile = { link = "Normal" },
+    OilHidden = { link = "Comment" },
+    OilLink = { link = "Underlined" },
+    OilTitle = { link = "Title" },
+    OilPreview = { link = "NormalFloat" },
+
+    FzfLuaNormal = { fg = palette.fg, bg = bg_alt },
+    FzfLuaBorder = { fg = palette.base4, bg = bg_alt },
+    FzfLuaTitle = { fg = palette.magenta, bold = true },
+    FzfLuaHeader = { fg = palette.violet },
+    FzfLuaPath = { fg = palette.blue },
+    FzfLuaCursorLine = { fg = palette.fg, bg = bg_alt3 },
+    FzfLuaCursorLineNr = { fg = palette.cyan },
+    FzfLuaSearch = { fg = palette.orange },
+    FzfLuaPrompt = { fg = palette.green },
+    FzfNormal = { fg = palette.fg, bg = bg_alt },
+    FzfBorder = { fg = palette.base4, bg = bg_alt },
   }
 end
 
