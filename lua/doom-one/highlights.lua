@@ -18,19 +18,19 @@ function M.get(palette, opts)
     Boolean = { fg = palette.orange },
     Float = { fg = palette.orange },
     Identifier = { fg = palette.cyan },
-    Function = { fg = palette.blue },
-    Statement = { fg = palette.magenta },
-    Conditional = { fg = palette.magenta },
-    Repeat = { fg = palette.magenta },
+    Function = { fg = palette.magenta },
+    Statement = { fg = palette.blue },
+    Conditional = { fg = palette.blue },
+    Repeat = { fg = palette.blue },
     Label = { fg = palette.violet },
-    Operator = { fg = palette.magenta },
-    Keyword = { fg = palette.magenta },
-    Exception = { fg = palette.magenta },
-    PreProc = { fg = palette.violet },
-    Include = { fg = palette.violet },
-    Define = { fg = palette.violet },
-    Macro = { fg = palette.violet },
-    PreCondit = { fg = palette.violet },
+    Operator = { fg = palette.blue },
+    Keyword = { fg = palette.blue },
+    Exception = { fg = palette.blue },
+    PreProc = { fg = palette.magenta },
+    Include = { fg = palette.blue },
+    Define = { fg = palette.magenta },
+    Macro = { fg = palette.magenta },
+    PreCondit = { fg = palette.magenta },
     Type = { fg = palette.yellow },
     StorageClass = { fg = palette.yellow },
     Structure = { fg = palette.yellow },
@@ -48,7 +48,7 @@ function M.get(palette, opts)
 
     CursorLine = { bg = bg_alt },
     CursorLineNr = { fg = palette.fg },
-    LineNr = { fg = palette.base5 },
+    LineNr = { fg = palette.base4 },
     Visual = { bg = bg_alt3 },
     Search = { fg = palette.base0, bg = palette.yellow },
     IncSearch = { fg = palette.base0, bg = palette.orange },
@@ -99,16 +99,18 @@ function M.get(palette, opts)
     Removed = { fg = palette.red },
 
     -- TreeSitter: Identifiers & Variables
-    ["@variable"] = { fg = palette.fg },
-    ["@variable.builtin"] = { fg = palette.orange },
+    -- Emacs: variables = (doom-lighten magenta 0.4) = #dcaeea
+    ["@variable"] = { fg = palette.light_magenta },
+    ["@variable.builtin"] = { fg = palette.magenta },
     ["@variable.parameter"] = { fg = palette.red },
     ["@variable.parameter.builtin"] = { fg = palette.red },
-    ["@variable.member"] = { fg = palette.teal },
-    ["@property"] = { fg = palette.teal },
+    ["@variable.member"] = { fg = palette.light_magenta },
+    ["@property"] = { fg = palette.light_magenta },
 
     -- TreeSitter: Constants
+    -- Emacs: constants = violet
     ["@constant"] = { link = "Constant" },
-    ["@constant.builtin"] = { fg = palette.orange },
+    ["@constant.builtin"] = { fg = palette.violet },
     ["@constant.macro"] = { fg = palette.violet },
 
     -- TreeSitter: Modules & Labels
@@ -117,6 +119,7 @@ function M.get(palette, opts)
     ["@label"] = { link = "Label" },
 
     -- TreeSitter: Strings & Literals
+    -- Emacs: strings = green
     ["@string"] = { link = "String" },
     ["@string.documentation"] = { fg = palette.green },
     ["@string.regexp"] = { fg = palette.green },
@@ -132,6 +135,7 @@ function M.get(palette, opts)
     ["@boolean"] = { link = "Boolean" },
 
     -- TreeSitter: Types
+    -- Emacs: type = yellow
     ["@type"] = { link = "Type" },
     ["@type.builtin"] = { fg = palette.yellow },
     ["@type.definition"] = { fg = palette.yellow },
@@ -139,29 +143,31 @@ function M.get(palette, opts)
     ["@attribute.builtin"] = { fg = palette.yellow },
 
     -- TreeSitter: Functions
+    -- Emacs: functions = magenta, methods = cyan, builtin = magenta
     ["@function"] = { link = "Function" },
-    ["@function.builtin"] = { fg = palette.cyan },
-    ["@function.call"] = { fg = palette.blue },
-    ["@function.macro"] = { fg = palette.violet },
-    ["@function.method"] = { fg = palette.blue },
-    ["@function.method.call"] = { fg = palette.blue },
-    ["@constructor"] = { fg = palette.blue },
+    ["@function.builtin"] = { fg = palette.magenta },
+    ["@function.call"] = { fg = palette.magenta },
+    ["@function.macro"] = { fg = palette.magenta },
+    ["@function.method"] = { fg = palette.cyan },
+    ["@function.method.call"] = { fg = palette.cyan },
+    ["@constructor"] = { fg = palette.magenta },
     ["@operator"] = { link = "Operator" },
 
     -- TreeSitter: Keywords
+    -- Emacs: keywords = blue
     ["@keyword"] = { link = "Keyword" },
-    ["@keyword.coroutine"] = { fg = palette.magenta },
-    ["@keyword.function"] = { fg = palette.magenta },
-    ["@keyword.operator"] = { fg = palette.magenta },
+    ["@keyword.coroutine"] = { fg = palette.blue },
+    ["@keyword.function"] = { fg = palette.blue },
+    ["@keyword.operator"] = { fg = palette.blue },
     ["@keyword.import"] = { link = "Include" },
-    ["@keyword.type"] = { fg = palette.yellow },
-    ["@keyword.modifier"] = { fg = palette.yellow },
+    ["@keyword.type"] = { fg = palette.blue },
+    ["@keyword.modifier"] = { fg = palette.blue },
     ["@keyword.repeat"] = { link = "Repeat" },
-    ["@keyword.return"] = { fg = palette.magenta },
+    ["@keyword.return"] = { fg = palette.blue },
     ["@keyword.debug"] = { link = "Debug" },
     ["@keyword.exception"] = { link = "Exception" },
     ["@keyword.conditional"] = { link = "Conditional" },
-    ["@keyword.conditional.ternary"] = { fg = palette.magenta },
+    ["@keyword.conditional.ternary"] = { fg = palette.blue },
     ["@keyword.directive"] = { fg = palette.magenta },
     ["@keyword.directive.define"] = { fg = palette.magenta },
 
@@ -180,8 +186,9 @@ function M.get(palette, opts)
     ["@comment.todo"] = { fg = palette.yellow },
 
     -- TreeSitter: Tags (HTML/JSX)
+    -- Emacs: rjsx-tag = red, rjsx-attr = orange
     ["@tag"] = { fg = palette.red },
-    ["@tag.attribute"] = { fg = palette.yellow },
+    ["@tag.attribute"] = { fg = palette.orange },
     ["@tag.delimiter"] = { fg = palette.base7 },
     ["@tag.builtin"] = { fg = palette.red },
 
@@ -193,14 +200,14 @@ function M.get(palette, opts)
     -- Semantic type captures
     ["@annotation"] = { fg = palette.yellow },
     ["@class"] = { fg = palette.yellow },
-    ["@decorator"] = { fg = palette.orange },
-    ["@enum"] = { fg = palette.cyan },
-    ["@enumMember"] = { fg = palette.orange },
-    ["@event"] = { fg = palette.orange },
+    ["@decorator"] = { fg = palette.magenta },
+    ["@enum"] = { fg = palette.yellow },
+    ["@enumMember"] = { fg = palette.violet },
+    ["@event"] = { fg = palette.magenta },
     ["@interface"] = { fg = palette.yellow },
     ["@struct"] = { fg = palette.yellow },
     ["@typeParameter"] = { fg = palette.yellow },
-    ["@regexp"] = { fg = palette.cyan },
+    ["@regexp"] = { fg = palette.green },
 
     -- TreeSitter: Markup (Markdown, RST, etc.)
     ["@markup.heading"] = { fg = palette.blue, bold = true },
@@ -288,47 +295,44 @@ function M.get(palette, opts)
     ["@lsp.typemod.variable.readonly"] = { link = "@constant" },
 
     -- Language-specific: Rust
-    ["@constant.rust"] = { fg = palette.cyan },
-    ["@function.macro.rust"] = { fg = palette.red },
-    ["@module.rust"] = { fg = palette.magenta },
-    ["@punctuation.special.rust"] = { fg = palette.magenta },
-    ["@type.rust"] = { fg = palette.cyan },
+    ["@function.macro.rust"] = { fg = palette.magenta },
+    ["@module.rust"] = { fg = palette.yellow },
+    ["@punctuation.special.rust"] = { fg = palette.blue },
 
     -- Language-specific: TypeScript / TSX
-    ["@keyword.type.typescript"] = { fg = palette.magenta },
     ["@constructor.typescript"] = { fg = palette.magenta },
     ["@constructor.tsx"] = { fg = palette.magenta },
-    ["@tag.attribute.tsx"] = { fg = palette.magenta, italic = true },
+    ["@tag.attribute.tsx"] = { fg = palette.orange, italic = true },
 
     -- Language-specific: CSS
-    ["@number.css"] = { fg = palette.cyan },
-    ["@property.css"] = { fg = palette.orange },
+    -- Emacs: css-property = green, css-selector = blue, css-proprietary-property = orange
+    ["@property.css"] = { fg = palette.green },
     ["@property.class.css"] = { fg = palette.yellow },
     ["@property.id.css"] = { fg = palette.blue },
-    ["@type.tag.css"] = { fg = palette.magenta },
+    ["@type.tag.css"] = { fg = palette.blue },
     ["@type.css"] = { fg = palette.orange },
 
     -- Language-specific: JSON
     ["@label.json"] = { fg = palette.blue },
 
     -- Language-specific: Lua
-    ["@constructor.lua"] = { fg = palette.orange },
+    ["@constructor.lua"] = { fg = palette.magenta },
 
     -- Language-specific: TOML
-    ["@property.toml"] = { fg = palette.red },
+    ["@property.toml"] = { fg = palette.light_magenta },
 
     -- Language-specific: YAML
-    ["@field.yaml"] = { fg = palette.red },
+    ["@field.yaml"] = { fg = palette.light_magenta },
 
     -- Language-specific: Ruby
     ["@string.special.symbol.ruby"] = { fg = palette.orange },
 
     -- Language-specific: PHP
     ["@type.qualifier.php"] = { link = "Keyword" },
-    ["@punctuation.bracket.php"] = { fg = palette.magenta, bold = true },
+    ["@punctuation.bracket.php"] = { fg = palette.blue, bold = true },
 
     -- Language-specific: C/C++
-    ["@property.cpp"] = { fg = palette.orange },
+    ["@property.cpp"] = { fg = palette.light_magenta },
 
     TelescopeNormal = { fg = palette.fg, bg = bg_alt },
     TelescopeBorder = { fg = palette.base4, bg = bg_alt },

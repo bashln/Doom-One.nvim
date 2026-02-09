@@ -25,6 +25,7 @@ M.colors = {
   violet = "#a9a1e1",
   cyan = "#46D9FF",
   dark_cyan = "#5699AF",
+  light_magenta = "#dcaeea",
 }
 
 return M
