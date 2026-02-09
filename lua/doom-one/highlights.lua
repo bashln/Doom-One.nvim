@@ -75,37 +75,132 @@ function M.get(palette, opts)
     DiagnosticWarn = { fg = palette.yellow },
     DiagnosticInfo = { fg = palette.blue },
     DiagnosticHint = { fg = palette.cyan },
+    DiagnosticOk = { fg = palette.green },
+    DiagnosticUnderlineError = { sp = palette.red, undercurl = true },
+    DiagnosticUnderlineWarn = { sp = palette.yellow, undercurl = true },
+    DiagnosticUnderlineInfo = { sp = palette.blue, undercurl = true },
+    DiagnosticUnderlineHint = { sp = palette.cyan, undercurl = true },
+    DiagnosticUnderlineOk = { sp = palette.green, undercurl = true },
 
-    -- TreeSitter: Core captures
-    ["@comment"] = { link = "Comment" },
-    ["@constant"] = { link = "Constant" },
-    ["@constant.builtin"] = { fg = palette.orange },
-    ["@string"] = { link = "String" },
-    ["@string.escape"] = { fg = palette.orange },
-    ["@string.special"] = { fg = palette.orange },
-    ["@number"] = { link = "Number" },
-    ["@boolean"] = { link = "Boolean" },
-    ["@function"] = { link = "Function" },
-    ["@function.builtin"] = { fg = palette.blue },
-    ["@function.call"] = { fg = palette.blue },
-    ["@keyword"] = { link = "Keyword" },
-    ["@keyword.return"] = { fg = palette.magenta },
-    ["@keyword.operator"] = { fg = palette.magenta },
-    ["@type"] = { link = "Type" },
-    ["@type.builtin"] = { fg = palette.yellow },
+    -- LSP Reference highlights
+    LspReferenceRead = { bg = palette.base3 },
+    LspReferenceText = { bg = palette.base3 },
+    LspReferenceWrite = { bg = palette.base3 },
+    LspCodeLens = { fg = palette.base5 },
+    LspCodeLensSeparator = { fg = palette.base5 },
+
+    -- Diff highlights
+    DiffAdd = { fg = palette.green },
+    DiffChange = { fg = palette.yellow },
+    DiffDelete = { fg = palette.red },
+    DiffText = { fg = palette.orange },
+    Added = { fg = palette.green },
+    Changed = { fg = palette.yellow },
+    Removed = { fg = palette.red },
+
+    -- TreeSitter: Identifiers & Variables
     ["@variable"] = { fg = palette.fg },
     ["@variable.builtin"] = { fg = palette.orange },
     ["@variable.parameter"] = { fg = palette.red },
-    ["@property"] = { fg = palette.fg },
+    ["@variable.parameter.builtin"] = { fg = palette.red },
+    ["@variable.member"] = { fg = palette.teal },
+    ["@property"] = { fg = palette.teal },
+
+    -- TreeSitter: Constants
+    ["@constant"] = { link = "Constant" },
+    ["@constant.builtin"] = { fg = palette.orange },
+    ["@constant.macro"] = { fg = palette.violet },
+
+    -- TreeSitter: Modules & Labels
+    ["@module"] = { fg = palette.yellow },
+    ["@module.builtin"] = { fg = palette.yellow },
+    ["@label"] = { link = "Label" },
+
+    -- TreeSitter: Strings & Literals
+    ["@string"] = { link = "String" },
+    ["@string.documentation"] = { fg = palette.green },
+    ["@string.regexp"] = { fg = palette.green },
+    ["@string.escape"] = { fg = palette.orange },
+    ["@string.special"] = { fg = palette.orange },
+    ["@string.special.symbol"] = { fg = palette.orange },
+    ["@string.special.url"] = { fg = palette.dark_cyan, underline = true },
+    ["@string.special.path"] = { fg = palette.green },
+    ["@character"] = { link = "Character" },
+    ["@character.special"] = { link = "SpecialChar" },
+    ["@number"] = { link = "Number" },
+    ["@number.float"] = { fg = palette.orange },
+    ["@boolean"] = { link = "Boolean" },
+
+    -- TreeSitter: Types
+    ["@type"] = { link = "Type" },
+    ["@type.builtin"] = { fg = palette.yellow },
+    ["@type.definition"] = { fg = palette.yellow },
+    ["@attribute"] = { fg = palette.yellow },
+    ["@attribute.builtin"] = { fg = palette.yellow },
+
+    -- TreeSitter: Functions
+    ["@function"] = { link = "Function" },
+    ["@function.builtin"] = { fg = palette.cyan },
+    ["@function.call"] = { fg = palette.blue },
+    ["@function.macro"] = { fg = palette.violet },
+    ["@function.method"] = { fg = palette.blue },
+    ["@function.method.call"] = { fg = palette.blue },
+    ["@constructor"] = { fg = palette.blue },
     ["@operator"] = { link = "Operator" },
+
+    -- TreeSitter: Keywords
+    ["@keyword"] = { link = "Keyword" },
+    ["@keyword.coroutine"] = { fg = palette.magenta },
+    ["@keyword.function"] = { fg = palette.magenta },
+    ["@keyword.operator"] = { fg = palette.magenta },
+    ["@keyword.import"] = { link = "Include" },
+    ["@keyword.type"] = { fg = palette.yellow },
+    ["@keyword.modifier"] = { fg = palette.yellow },
+    ["@keyword.repeat"] = { link = "Repeat" },
+    ["@keyword.return"] = { fg = palette.magenta },
+    ["@keyword.debug"] = { link = "Debug" },
+    ["@keyword.exception"] = { link = "Exception" },
+    ["@keyword.conditional"] = { link = "Conditional" },
+    ["@keyword.conditional.ternary"] = { fg = palette.magenta },
+    ["@keyword.directive"] = { fg = palette.magenta },
+    ["@keyword.directive.define"] = { fg = palette.magenta },
+
+    -- TreeSitter: Punctuation
     ["@punctuation.bracket"] = { fg = palette.base7 },
     ["@punctuation.delimiter"] = { fg = palette.base7 },
     ["@punctuation.special"] = { fg = palette.blue },
+
+    -- TreeSitter: Comments
+    ["@comment"] = { link = "Comment" },
+    ["@comment.documentation"] = { link = "Comment" },
+    ["@comment.error"] = { link = "DiagnosticError" },
+    ["@comment.warning"] = { link = "DiagnosticWarn" },
+    ["@comment.hint"] = { link = "DiagnosticHint" },
+    ["@comment.info"] = { link = "DiagnosticInfo" },
+    ["@comment.todo"] = { fg = palette.yellow },
+
+    -- TreeSitter: Tags (HTML/JSX)
     ["@tag"] = { fg = palette.red },
     ["@tag.attribute"] = { fg = palette.yellow },
     ["@tag.delimiter"] = { fg = palette.base7 },
-    ["@module"] = { fg = palette.yellow },
-    ["@label"] = { link = "Label" },
+    ["@tag.builtin"] = { fg = palette.red },
+
+    -- TreeSitter: Diff
+    ["@diff.plus"] = { fg = palette.green },
+    ["@diff.minus"] = { fg = palette.red },
+    ["@diff.delta"] = { fg = palette.yellow },
+
+    -- Semantic type captures
+    ["@annotation"] = { fg = palette.yellow },
+    ["@class"] = { fg = palette.yellow },
+    ["@decorator"] = { fg = palette.orange },
+    ["@enum"] = { fg = palette.cyan },
+    ["@enumMember"] = { fg = palette.orange },
+    ["@event"] = { fg = palette.orange },
+    ["@interface"] = { fg = palette.yellow },
+    ["@struct"] = { fg = palette.yellow },
+    ["@typeParameter"] = { fg = palette.yellow },
+    ["@regexp"] = { fg = palette.cyan },
 
     -- TreeSitter: Markup (Markdown, RST, etc.)
     ["@markup.heading"] = { fg = palette.blue, bold = true },
@@ -155,6 +250,85 @@ function M.get(palette, opts)
     markdownRule = { fg = palette.base5 },
     markdownFootnote = { fg = palette.dark_cyan },
     markdownEscape = { fg = palette.orange },
+
+    -- LSP Semantic Token Types
+    ["@lsp.type.boolean"] = { link = "@boolean" },
+    ["@lsp.type.builtinType"] = { link = "@type.builtin" },
+    ["@lsp.type.comment"] = { link = "@comment" },
+    ["@lsp.type.enum"] = { link = "@type" },
+    ["@lsp.type.enumMember"] = { link = "@constant" },
+    ["@lsp.type.escapeSequence"] = { link = "@string.escape" },
+    ["@lsp.type.formatSpecifier"] = { link = "@punctuation.special" },
+    ["@lsp.type.interface"] = { fg = palette.yellow },
+    ["@lsp.type.keyword"] = { link = "@keyword" },
+    ["@lsp.type.namespace"] = { link = "@module" },
+    ["@lsp.type.number"] = { link = "@number" },
+    ["@lsp.type.operator"] = { link = "@operator" },
+    ["@lsp.type.parameter"] = { link = "@variable.parameter" },
+    ["@lsp.type.property"] = { link = "@property" },
+    ["@lsp.type.selfKeyword"] = { link = "@variable.builtin" },
+    ["@lsp.type.typeAlias"] = { link = "@type.definition" },
+    ["@lsp.type.unresolvedReference"] = { sp = palette.red, undercurl = true },
+    ["@lsp.type.variable"] = {},
+
+    -- LSP Semantic Token Modifiers
+    ["@lsp.typemod.class.defaultLibrary"] = { link = "@type.builtin" },
+    ["@lsp.typemod.enum.defaultLibrary"] = { link = "@type.builtin" },
+    ["@lsp.typemod.enumMember.defaultLibrary"] = { link = "@constant.builtin" },
+    ["@lsp.typemod.function.defaultLibrary"] = { link = "@function.builtin" },
+    ["@lsp.typemod.function.global"] = { link = "@function.builtin" },
+    ["@lsp.typemod.keyword.async"] = { link = "@keyword.coroutine" },
+    ["@lsp.typemod.macro.defaultLibrary"] = { link = "@function.builtin" },
+    ["@lsp.typemod.method.defaultLibrary"] = { link = "@function.builtin" },
+    ["@lsp.typemod.operator.injected"] = { link = "@operator" },
+    ["@lsp.typemod.string.injected"] = { link = "@string" },
+    ["@lsp.typemod.type.defaultLibrary"] = { link = "@type.builtin" },
+    ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
+    ["@lsp.typemod.variable.injected"] = { link = "@variable" },
+    ["@lsp.typemod.variable.readonly"] = { link = "@constant" },
+
+    -- Language-specific: Rust
+    ["@constant.rust"] = { fg = palette.cyan },
+    ["@function.macro.rust"] = { fg = palette.red },
+    ["@module.rust"] = { fg = palette.magenta },
+    ["@punctuation.special.rust"] = { fg = palette.magenta },
+    ["@type.rust"] = { fg = palette.cyan },
+
+    -- Language-specific: TypeScript / TSX
+    ["@keyword.type.typescript"] = { fg = palette.magenta },
+    ["@constructor.typescript"] = { fg = palette.magenta },
+    ["@constructor.tsx"] = { fg = palette.magenta },
+    ["@tag.attribute.tsx"] = { fg = palette.magenta, italic = true },
+
+    -- Language-specific: CSS
+    ["@number.css"] = { fg = palette.cyan },
+    ["@property.css"] = { fg = palette.orange },
+    ["@property.class.css"] = { fg = palette.yellow },
+    ["@property.id.css"] = { fg = palette.blue },
+    ["@type.tag.css"] = { fg = palette.magenta },
+    ["@type.css"] = { fg = palette.orange },
+
+    -- Language-specific: JSON
+    ["@label.json"] = { fg = palette.blue },
+
+    -- Language-specific: Lua
+    ["@constructor.lua"] = { fg = palette.orange },
+
+    -- Language-specific: TOML
+    ["@property.toml"] = { fg = palette.red },
+
+    -- Language-specific: YAML
+    ["@field.yaml"] = { fg = palette.red },
+
+    -- Language-specific: Ruby
+    ["@string.special.symbol.ruby"] = { fg = palette.orange },
+
+    -- Language-specific: PHP
+    ["@type.qualifier.php"] = { link = "Keyword" },
+    ["@punctuation.bracket.php"] = { fg = palette.magenta, bold = true },
+
+    -- Language-specific: C/C++
+    ["@property.cpp"] = { fg = palette.orange },
 
     TelescopeNormal = { fg = palette.fg, bg = bg_alt },
     TelescopeBorder = { fg = palette.base4, bg = bg_alt },
