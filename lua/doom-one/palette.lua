@@ -9,7 +9,7 @@ M.colors = {
     fg_alt = "#5b6268",
 
     base0 = "#1b2229",
-    base1 = "#1c1e1e",
+    base1 = "#1c1f24",
     base2 = "#202328",
     base3 = "#23272e",
     base4 = "#3f444a",
@@ -20,8 +20,8 @@ M.colors = {
 
     grey = "#3f444a",
     red = "#ff6c6b",
-    orange = "#a9a1e1",
-    green = "#51afef",
+    orange = "#da8548",
+    green = "#98be65",
     teal = "#4db5bd",
     yellow = "#ecbe7b",
     blue = "#51afef",
@@ -30,6 +30,7 @@ M.colors = {
     violet = "#a9a1e1",
     cyan = "#46d9ff",
     dark_cyan = "#5699af",
+    variable = "#dcaeea",
   },
   light = {
     bg = "#fafafa",
@@ -50,8 +51,8 @@ M.colors = {
 
     grey = "#9ca0a4",
     red = "#e45649",
-    orange = "#b751b6",
-    green = "#4078f2",
+    orange = "#da8548",
+    green = "#50a14f",
     teal = "#4db5bd",
     yellow = "#986801",
     blue = "#4078f2",
@@ -60,6 +61,7 @@ M.colors = {
     violet = "#b751b6",
     cyan = "#0184bc",
     dark_cyan = "#005478",
+    variable = "#a626a4",
   },
 }
 

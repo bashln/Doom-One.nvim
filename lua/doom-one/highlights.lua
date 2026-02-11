@@ -17,7 +17,7 @@ function M.get(palette, opts)
     Number = { fg = palette.orange },
     Boolean = { fg = palette.orange },
     Float = { fg = palette.orange },
-    Identifier = { fg = palette.cyan },
+    Identifier = { fg = palette.variable },
     Function = { fg = palette.magenta },
     Statement = { fg = palette.blue },
     Conditional = { fg = palette.blue },
@@ -99,12 +99,12 @@ function M.get(palette, opts)
     Removed = { fg = palette.red },
 
     -- TreeSitter: Identifiers & Variables
-    ["@variable"] = { fg = palette.fg },
-    ["@variable.builtin"] = { fg = palette.orange },
-    ["@variable.parameter"] = { fg = palette.red },
-    ["@variable.parameter.builtin"] = { fg = palette.red },
-    ["@variable.member"] = { fg = palette.teal },
-    ["@property"] = { fg = palette.teal },
+    ["@variable"] = { fg = palette.variable },
+    ["@variable.builtin"] = { fg = palette.magenta },
+    ["@variable.parameter"] = { fg = palette.variable },
+    ["@variable.parameter.builtin"] = { fg = palette.variable },
+    ["@variable.member"] = { fg = palette.violet },
+    ["@property"] = { fg = palette.violet },
 
     -- TreeSitter: Constants
     ["@constant"] = { link = "Constant" },
@@ -140,7 +140,7 @@ function M.get(palette, opts)
 
     -- TreeSitter: Functions
     ["@function"] = { link = "Function" },
-    ["@function.builtin"] = { fg = palette.cyan },
+    ["@function.builtin"] = { fg = palette.magenta },
     ["@function.call"] = { fg = palette.magenta },
     ["@function.macro"] = { fg = palette.violet },
     ["@function.method"] = { fg = palette.cyan },
