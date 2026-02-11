@@ -2,6 +2,7 @@ local M = {}
 
 M.config = {
   transparent = false,
+  background = nil,
   colors = {},
   highlights = {},
 }
@@ -18,7 +19,8 @@ function M.load()
   vim.o.termguicolors = true
   vim.g.colors_name = "doom-one"
 
-  local base_palette = require("doom-one.palette").colors
+  local background = M.config.background or vim.o.background
+  local base_palette = require("doom-one.palette").get_palette(background)
   local palette = vim.tbl_deep_extend("force", base_palette, M.config.colors or {})
   local highlights = require("doom-one.highlights").get(palette, M.config)
 

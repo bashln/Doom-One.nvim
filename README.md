@@ -21,6 +21,7 @@ return {
     priority = 1000,
     opts = {
       transparent = false,
+      background = "dark",
       colors = {},
       highlights = {},
     },
@@ -44,6 +45,7 @@ return {
     priority = 1000,
     opts = {
       transparent = false,
+      background = "dark",
       colors = {},
       highlights = {},
     },
@@ -60,6 +62,7 @@ return {
 ```lua
 require("doom-one").setup({
   transparent = false,
+  background = "dark",
 })
 
 vim.cmd.colorscheme("doom-one")
@@ -72,8 +75,19 @@ As opções podem ser passadas no `setup`:
 ```lua
 require("doom-one").setup({
   transparent = false,
+  background = "dark",
   colors = {},
   highlights = {},
+})
+```
+
+### background
+
+Escolhe a variante da paleta (`"dark"` ou `"light"`).
+
+```lua
+require("doom-one").setup({
+  background = "light",
 })
 ```
 
@@ -125,7 +139,7 @@ require("doom-one").setup({
 })
 ```
 
-## Paleta principal
+## Paleta principal (dark)
 
 - bg: `#282c34`
 - fg: `#bbc2cf`
@@ -137,3 +151,16 @@ require("doom-one").setup({
 - magenta: `#c678dd`
 - violet: `#a9a1e1`
 - cyan: `#46D9FF`
+
+## Paleta light
+
+- bg: `#fafafa`
+- fg: `#383a42`
+- red: `#e45649`
+- orange: `#da8548`
+- green: `#50a14f`
+- yellow: `#986801`
+- blue: `#4078f2`
+- magenta: `#a626a4`
+- violet: `#b751b6`
+- cyan: `#0184bc`
