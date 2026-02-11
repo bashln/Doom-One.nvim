@@ -2,6 +2,9 @@ local M = {}
 
 function M.get(palette, opts)
   local config = opts or {}
+  local palette_mod = require("doom-one.palette")
+  local blend = palette_mod.blend
+
   local bg = config.transparent and "NONE" or palette.bg
   local bg_alt = config.transparent and "NONE" or palette.base2
   local bg_alt2 = config.transparent and "NONE" or palette.base1
@@ -46,6 +49,7 @@ function M.get(palette, opts)
     Error = { fg = palette.red, bold = true },
     Todo = { fg = palette.magenta, bold = true },
 
+    Folded = { fg = palette.blue, bg = blend(palette.blue, bg, 0.1) },
     CursorLine = { bg = bg_alt },
     CursorLineNr = { fg = palette.fg },
     LineNr = { fg = palette.base4 },
@@ -204,12 +208,12 @@ function M.get(palette, opts)
 
     -- TreeSitter: Markup (Markdown, RST, etc.)
     ["@markup.heading"] = { fg = palette.blue, bold = true },
-    ["@markup.heading.1"] = { fg = palette.red, bold = true },
-    ["@markup.heading.2"] = { fg = palette.orange, bold = true },
-    ["@markup.heading.3"] = { fg = palette.yellow, bold = true },
-    ["@markup.heading.4"] = { fg = palette.green, bold = true },
-    ["@markup.heading.5"] = { fg = palette.blue, bold = true },
-    ["@markup.heading.6"] = { fg = palette.magenta, bold = true },
+    ["@markup.heading.1"] = { fg = palette.red, bg = blend(palette.red, bg, 0.1), bold = true },
+    ["@markup.heading.2"] = { fg = palette.orange, bg = blend(palette.orange, bg, 0.1), bold = true },
+    ["@markup.heading.3"] = { fg = palette.yellow, bg = blend(palette.yellow, bg, 0.1), bold = true },
+    ["@markup.heading.4"] = { fg = palette.green, bg = blend(palette.green, bg, 0.1), bold = true },
+    ["@markup.heading.5"] = { fg = palette.blue, bg = blend(palette.blue, bg, 0.1), bold = true },
+    ["@markup.heading.6"] = { fg = palette.magenta, bg = blend(palette.magenta, bg, 0.1), bold = true },
     ["@markup.strong"] = { bold = true },
     ["@markup.italic"] = { italic = true },
     ["@markup.strikethrough"] = { strikethrough = true },
@@ -226,12 +230,12 @@ function M.get(palette, opts)
     ["@markup.math"] = { fg = palette.violet },
 
     -- Legacy Vim: Markdown syntax groups
-    markdownH1 = { fg = palette.red, bold = true },
-    markdownH2 = { fg = palette.orange, bold = true },
-    markdownH3 = { fg = palette.yellow, bold = true },
-    markdownH4 = { fg = palette.green, bold = true },
-    markdownH5 = { fg = palette.blue, bold = true },
-    markdownH6 = { fg = palette.magenta, bold = true },
+    markdownH1 = { fg = palette.red, bg = blend(palette.red, bg, 0.1), bold = true },
+    markdownH2 = { fg = palette.orange, bg = blend(palette.orange, bg, 0.1), bold = true },
+    markdownH3 = { fg = palette.yellow, bg = blend(palette.yellow, bg, 0.1), bold = true },
+    markdownH4 = { fg = palette.green, bg = blend(palette.green, bg, 0.1), bold = true },
+    markdownH5 = { fg = palette.blue, bg = blend(palette.blue, bg, 0.1), bold = true },
+    markdownH6 = { fg = palette.magenta, bg = blend(palette.magenta, bg, 0.1), bold = true },
     markdownHeadingDelimiter = { fg = palette.base5, bold = true },
     markdownHeadingRule = { fg = palette.base5 },
     markdownBold = { bold = true },
@@ -364,6 +368,30 @@ function M.get(palette, opts)
     FzfLuaPrompt = { fg = palette.green },
     FzfNormal = { fg = palette.fg, bg = bg_alt },
     FzfBorder = { fg = palette.base4, bg = bg_alt },
+
+    -- headlines.nvim
+    Headline1 = { fg = palette.red, bg = blend(palette.red, bg, 0.1), bold = true },
+    Headline2 = { fg = palette.orange, bg = blend(palette.orange, bg, 0.1), bold = true },
+    Headline3 = { fg = palette.yellow, bg = blend(palette.yellow, bg, 0.1), bold = true },
+    Headline4 = { fg = palette.green, bg = blend(palette.green, bg, 0.1), bold = true },
+    Headline5 = { fg = palette.blue, bg = blend(palette.blue, bg, 0.1), bold = true },
+    Headline6 = { fg = palette.magenta, bg = blend(palette.magenta, bg, 0.1), bold = true },
+
+    -- render-markdown.nvim
+    RenderMarkdownH1Bg = { bg = blend(palette.red, bg, 0.1) },
+    RenderMarkdownH2Bg = { bg = blend(palette.orange, bg, 0.1) },
+    RenderMarkdownH3Bg = { bg = blend(palette.yellow, bg, 0.1) },
+    RenderMarkdownH4Bg = { bg = blend(palette.green, bg, 0.1) },
+    RenderMarkdownH5Bg = { bg = blend(palette.blue, bg, 0.1) },
+    RenderMarkdownH6Bg = { bg = blend(palette.magenta, bg, 0.1) },
+
+    -- markview.nvim
+    MarkviewHeading1 = { fg = palette.red, bg = blend(palette.red, bg, 0.1), bold = true },
+    MarkviewHeading2 = { fg = palette.orange, bg = blend(palette.orange, bg, 0.1), bold = true },
+    MarkviewHeading3 = { fg = palette.yellow, bg = blend(palette.yellow, bg, 0.1), bold = true },
+    MarkviewHeading4 = { fg = palette.green, bg = blend(palette.green, bg, 0.1), bold = true },
+    MarkviewHeading5 = { fg = palette.blue, bg = blend(palette.blue, bg, 0.1), bold = true },
+    MarkviewHeading6 = { fg = palette.magenta, bg = blend(palette.magenta, bg, 0.1), bold = true },
   }
 end
 
