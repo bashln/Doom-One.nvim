@@ -69,4 +69,23 @@ function M.get_palette(background)
   return M.colors[background] or M.colors.dark
 end
 
+local function hex_to_rgb(hex)
+  hex = hex:gsub("#", "")
+  return tonumber("0x" .. hex:sub(1, 2)), tonumber("0x" .. hex:sub(3, 4)), tonumber("0x" .. hex:sub(5, 6))
+end
+
+local function rgb_to_hex(r, g, b)
+  return string.format("#%02x%02x%02x", r, g, b)
+end
+
+function M.blend(foreground, background, alpha)
+  alpha = alpha or 0.15
+  local r1, g1, b1 = hex_to_rgb(foreground)
+  local r2, g2, b2 = hex_to_rgb(background)
+  local r = math.floor(r1 * alpha + r2 * (1 - alpha))
+  local g = math.floor(g1 * alpha + g2 * (1 - alpha))
+  local b = math.floor(b1 * alpha + b2 * (1 - alpha))
+  return rgb_to_hex(r, g, b)
+end
+
 return M
