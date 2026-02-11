@@ -32,6 +32,68 @@ M.colors = {
     dark_cyan = "#5699af",
     variable = "#dcaeea",
   },
+  darker = {
+    bg = "#1c1f24",
+    fg = "#bbc2cf",
+
+    bg_alt = "#17191e",
+    fg_alt = "#5b6268",
+
+    base0 = "#0f1115",
+    base1 = "#111317",
+    base2 = "#14161b",
+    base3 = "#1a1c21",
+    base4 = "#3f444a",
+    base5 = "#5b6268",
+    base6 = "#73797e",
+    base7 = "#9ca0a4",
+    base8 = "#dfdfdf",
+
+    grey = "#3f444a",
+    red = "#ff6c6b",
+    orange = "#da8548",
+    green = "#98be65",
+    teal = "#4db5bd",
+    yellow = "#ecbe7b",
+    blue = "#51afef",
+    dark_blue = "#2257a0",
+    magenta = "#c678dd",
+    violet = "#a9a1e1",
+    cyan = "#46d9ff",
+    dark_cyan = "#5699af",
+    variable = "#dcaeea",
+  },
+  vibrant = {
+    bg = "#1a1b26", -- High contrast background
+    fg = "#c0caf5",
+
+    bg_alt = "#16161e",
+    fg_alt = "#565f89",
+
+    base0 = "#15161e",
+    base1 = "#1a1b26",
+    base2 = "#24283b",
+    base3 = "#292e42",
+    base4 = "#414868",
+    base5 = "#5b6268",
+    base6 = "#73797e",
+    base7 = "#9ca0a4",
+    base8 = "#dfdfdf",
+
+    grey = "#3f444a",
+    red = "#ff6c6b",
+    orange = "#da8548",
+    green = "#98be65",
+    teal = "#4db5bd",
+    yellow = "#ecbe7b",
+    blue = "#51afef",
+    dark_blue = "#2257a0",
+    magenta = "#c678dd",
+    violet = "#a9a1e1",
+    cyan = "#46d9ff",
+    dark_cyan = "#5699af",
+    variable = "#dcaeea",
+  },
   light = {
     bg = "#fafafa",
     fg = "#383a42",
@@ -79,6 +141,9 @@ local function rgb_to_hex(r, g, b)
 end
 
 function M.blend(foreground, background, alpha)
+  if background == "NONE" then
+    return "NONE"
+  end
   alpha = alpha or 0.15
   local r1, g1, b1 = hex_to_rgb(foreground)
   local r2, g2, b2 = hex_to_rgb(background)

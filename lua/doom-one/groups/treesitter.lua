@@ -1,0 +1,127 @@
+local M = {}
+
+function M.get(palette, config)
+  local styles = config.styles or {}
+
+  return {
+    -- TreeSitter: Identifiers & Variables
+    ["@variable"] = vim.tbl_extend("force", { fg = palette.orange }, styles.variables or {}),
+    ["@variable.builtin"] = { fg = palette.magenta },
+    ["@variable.parameter"] = { fg = palette.orange },
+    ["@variable.parameter.builtin"] = { fg = palette.orange },
+    ["@variable.member"] = vim.tbl_extend("force", { fg = palette.fg }, styles.properties or {}),
+    ["@property"] = vim.tbl_extend("force", { fg = palette.fg }, styles.properties or {}),
+
+    -- TreeSitter: Constants
+    ["@constant"] = { link = "Constant" },
+    ["@constant.builtin"] = { fg = palette.orange },
+    ["@constant.macro"] = { fg = palette.violet },
+
+    -- TreeSitter: Modules & Labels
+    ["@module"] = { fg = palette.yellow },
+    ["@module.builtin"] = { fg = palette.yellow },
+    ["@label"] = { link = "Label" },
+
+    -- TreeSitter: Strings & Literals
+    ["@string"] = { link = "String" },
+    ["@string.documentation"] = { fg = palette.green },
+    ["@string.regexp"] = { fg = palette.green },
+    ["@string.escape"] = { fg = palette.orange },
+    ["@string.special"] = { fg = palette.orange },
+    ["@string.special.symbol"] = { fg = palette.orange },
+    ["@string.special.url"] = { fg = palette.dark_cyan, underline = true },
+    ["@string.special.path"] = { fg = palette.green },
+    ["@character"] = { link = "Character" },
+    ["@character.special"] = { link = "SpecialChar" },
+    ["@number"] = { link = "Number" },
+    ["@number.float"] = { fg = palette.orange },
+    ["@boolean"] = { link = "Boolean" },
+
+    -- TreeSitter: Types
+    ["@type"] = { link = "Type" },
+    ["@type.builtin"] = { fg = palette.yellow },
+    ["@type.definition"] = { fg = palette.yellow },
+    ["@attribute"] = { fg = palette.yellow },
+    ["@attribute.builtin"] = { fg = palette.yellow },
+
+    -- TreeSitter: Functions
+    ["@function"] = { link = "Function" },
+    ["@function.builtin"] = { fg = palette.magenta },
+    ["@function.call"] = { fg = palette.magenta },
+    ["@function.macro"] = { fg = palette.violet },
+    ["@function.method"] = { fg = palette.magenta },
+    ["@function.method.call"] = { fg = palette.magenta },
+    ["@constructor"] = { fg = palette.blue },
+    ["@operator"] = { link = "Operator" },
+
+    -- TreeSitter: Keywords
+    ["@keyword"] = { link = "Keyword" },
+    ["@keyword.coroutine"] = { fg = palette.blue },
+    ["@keyword.function"] = { fg = palette.blue },
+    ["@keyword.operator"] = { fg = palette.blue },
+    ["@keyword.import"] = { link = "Include" },
+    ["@keyword.type"] = { fg = palette.yellow },
+    ["@keyword.modifier"] = { fg = palette.yellow },
+    ["@keyword.repeat"] = { link = "Repeat" },
+    ["@keyword.return"] = { fg = palette.blue },
+    ["@keyword.debug"] = { link = "Debug" },
+    ["@keyword.exception"] = { link = "Exception" },
+    ["@keyword.conditional"] = { link = "Conditional" },
+    ["@keyword.conditional.ternary"] = { fg = palette.blue },
+    ["@keyword.directive"] = { fg = palette.blue },
+    ["@keyword.directive.define"] = { fg = palette.blue },
+
+    -- TreeSitter: Punctuation
+    ["@punctuation.bracket"] = { fg = palette.base7 },
+    ["@punctuation.delimiter"] = { fg = palette.base7 },
+    ["@punctuation.special"] = { fg = palette.blue },
+
+    -- TreeSitter: Comments
+    ["@comment"] = { link = "Comment" },
+    ["@comment.documentation"] = { link = "Comment" },
+    ["@comment.error"] = { link = "DiagnosticError" },
+    ["@comment.warning"] = { link = "DiagnosticWarn" },
+    ["@comment.hint"] = { link = "DiagnosticHint" },
+    ["@comment.info"] = { link = "DiagnosticInfo" },
+    ["@comment.todo"] = { fg = palette.yellow },
+
+    -- TreeSitter: Tags (HTML/JSX)
+    ["@tag"] = { fg = palette.magenta },
+    ["@tag.attribute"] = { fg = palette.orange, italic = true },
+    ["@tag.delimiter"] = { fg = palette.base7 },
+    ["@tag.builtin"] = { fg = palette.red },
+    ["@tag.javascript"] = { fg = palette.magenta },
+    ["@tag.tsx"] = { fg = palette.magenta },
+    ["@tag.attribute.tsx"] = { fg = palette.orange, italic = true },
+
+    -- TreeSitter: Diff
+    ["@diff.plus"] = { fg = palette.green },
+    ["@diff.minus"] = { fg = palette.red },
+    ["@diff.delta"] = { fg = palette.yellow },
+
+    -- TreeSitter: Markup (Markdown, RST, etc.)
+    ["@markup.heading"] = { fg = palette.blue, bold = true },
+    ["@markup.heading.1"] = { fg = palette.red, bg = require("doom-one.palette").blend(palette.red, palette.bg, 0.1), bold = true },
+    ["@markup.heading.2"] = { fg = palette.orange, bg = require("doom-one.palette").blend(palette.orange, palette.bg, 0.1), bold = true },
+    ["@markup.heading.3"] = { fg = palette.yellow, bg = require("doom-one.palette").blend(palette.yellow, palette.bg, 0.1), bold = true },
+    ["@markup.heading.4"] = { fg = palette.green, bg = require("doom-one.palette").blend(palette.green, palette.bg, 0.1), bold = true },
+    ["@markup.heading.5"] = { fg = palette.blue, bg = require("doom-one.palette").blend(palette.blue, palette.bg, 0.1), bold = true },
+    ["@markup.heading.6"] = { fg = palette.magenta, bg = require("doom-one.palette").blend(palette.magenta, palette.bg, 0.1), bold = true },
+    ["@markup.strong"] = { bold = true },
+    ["@markup.italic"] = { italic = true },
+    ["@markup.strikethrough"] = { strikethrough = true },
+    ["@markup.underline"] = { underline = true },
+    ["@markup.link"] = { fg = palette.cyan },
+    ["@markup.link.label"] = { fg = palette.blue, underline = true },
+    ["@markup.link.url"] = { fg = palette.dark_cyan, underline = true },
+    ["@markup.raw"] = { fg = palette.teal },
+    ["@markup.raw.block"] = { fg = palette.teal },
+    ["@markup.list"] = { fg = palette.blue },
+    ["@markup.list.checked"] = { fg = palette.green },
+    ["@markup.list.unchecked"] = { fg = palette.base5 },
+    ["@markup.quote"] = { fg = palette.base6, italic = true },
+    ["@markup.math"] = { fg = palette.violet },
+  }
+end
+
+return M

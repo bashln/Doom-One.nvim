@@ -1,168 +1,149 @@
-# Doom-One.nvim
+<div align="center">
+  <img src="https://raw.githubusercontent.com/bashln/Doom-One.nvim/main/assets/logo.png" alt="Doom One" width="200" />
+  <h1>Doom-One.nvim</h1>
+  <p>
+    Um port fiel e vibrante do tema <b>Doom One</b> do Doom Emacs para o Neovim.
+  </p>
 
-Tema inspirado no Doom One do Doom Emacs, convertido para Neovim.
+  <p>
+    <a href="https://github.com/bashln/Doom-One.nvim/stargazers"><img src="https://img.shields.io/github/stars/bashln/Doom-One.nvim?style=for-the-badge&logo=github&color=51afef&logoColor=282c34" alt="Stars" /></a>
+    <a href="https://github.com/bashln/Doom-One.nvim/blob/main/LICENSE"><img src="https://img.shields.io/github/license/bashln/Doom-One.nvim?style=for-the-badge&logo=opensourceinitiative&color=98be65&logoColor=282c34" alt="License" /></a>
+  </p>
+</div>
 
-## Instalação
+---
 
-```lua
--- lazy.nvim
-{ "bashln/Doom-One.nvim" }
-```
+## 📸 Screenshots
 
-### LazyVim
+*Em breve...*
 
-Crie ou edite `lua/plugins/colorscheme.lua`:
+## ✨ Características
 
-```lua
-return {
-  {
-    "bashln/Doom-One.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      transparent = false,
-      background = "dark",
-      colors = {},
-      highlights = {},
-    },
-    config = function(_, opts)
-      require("doom-one").setup(opts)
-      vim.cmd.colorscheme("doom-one")
-    end,
-  },
-}
-```
+- 🎨 **4 Variantes**: Dark, Darker, Vibrant e Light.
+- 🚀 **Performance**: Escrito inteiramente em Lua, otimizado para o Neovim moderno.
+- 🛠️ **Modular**: Estrutura organizada e fácil de estender.
+- 🔌 **Integrações**: Suporte nativo para os plugins mais populares (LazyVim compatível).
+- ⚙️ **Customizável**: Ajuste estilos de fontes (itálico/negrito) e cores facilmente.
 
-### LazyVim
+## 🌈 Sabores
 
-Crie ou edite `lua/plugins/colorscheme.lua`:
+| Variante | Descrição |
+| --- | --- |
+| `dark` | O clássico Doom One (padrão). |
+| `darker` | Uma versão com fundo mais profundo e escuro. |
+| `vibrant` | Alto contraste inspirado no TokyoNight, mantendo a alma do Doom One. |
+| `light` | Uma variante clara elegante e legível. |
 
-```lua
-return {
-  {
-    "seu-usuario/Doom-One.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      transparent = false,
-      background = "dark",
-      colors = {},
-      highlights = {},
-    },
-    config = function(_, opts)
-      require("doom-one").setup(opts)
-      vim.cmd.colorscheme("doom-one")
-    end,
-  },
-}
-```
+## 📦 Instalação
 
-## Uso
+### [lazy.nvim](https://github.com/folke/lazy.nvim)
 
 ```lua
-require("doom-one").setup({
-  transparent = false,
-  background = "dark",
-})
-
-vim.cmd.colorscheme("doom-one")
-```
-
-## Opções
-
-As opções podem ser passadas no `setup`:
-
-```lua
-require("doom-one").setup({
-  transparent = false,
-  background = "dark",
-  colors = {},
-  highlights = {},
-})
-```
-
-### background
-
-Escolhe a variante da paleta (`"dark"` ou `"light"`).
-
-```lua
-require("doom-one").setup({
-  background = "light",
-})
-```
-
-### transparent
-
-Remove o fundo do tema para combinar com o background do terminal.
-
-```lua
-require("doom-one").setup({
-  transparent = true,
-})
-```
-
-### colors (alterar paleta)
-
-Sobrescreve cores da paleta base.
-
-```lua
-require("doom-one").setup({
-  colors = {
-    bg = "#1b1f27",
-    fg = "#c6d0f5",
-    blue = "#7aa2f7",
-  },
-})
-```
-
-### highlights (customizar grupos)
-
-Aceita uma tabela de grupos ou uma função que recebe a paleta final.
-
-```lua
-require("doom-one").setup({
-  highlights = {
-    Normal = { fg = "#c6d0f5", bg = "NONE" },
-    Comment = { fg = "#8b949e", italic = true },
-  },
-})
-```
-
-```lua
-require("doom-one").setup({
-  highlights = function(colors)
-    return {
-      Search = { fg = colors.base0, bg = colors.yellow },
-      Visual = { bg = colors.base3 },
-    }
+{
+  "bashln/Doom-One.nvim",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require("doom-one").setup({
+      -- suas configurações aqui
+    })
+    vim.cmd.colorscheme("doom-one")
   end,
+}
+```
+
+### [packer.nvim](https://github.com/wbthomason/packer.nvim)
+
+```lua
+use({
+  "bashln/Doom-One.nvim",
+  config = function()
+    require("doom-one").setup()
+    vim.cmd.colorscheme("doom-one")
+  end
 })
 ```
 
-## Paleta principal (dark)
+### [vim-plug](https://github.com/junegunn/vim-plug)
 
-- bg: `#282c34`
-- fg: `#bbc2cf`
-- red: `#ff6c6b`
-- orange: `#da8548`
-- green: `#98be65`
-- yellow: `#ECBE7B`
-- blue: `#51afef`
-- magenta: `#c678dd`
-- violet: `#a9a1e1`
-- cyan: `#46D9FF`
-- variable: `#dcaeea`
+```vim
+Plug 'bashln/Doom-One.nvim'
 
-## Paleta light
+" No seu init.lua ou init.vim
+lua << EOF
+require("doom-one").setup()
+vim.cmd.colorscheme("doom-one")
+EOF
+```
 
-- bg: `#fafafa`
-- fg: `#383a42`
-- red: `#e45649`
-- orange: `#da8548`
-- green: `#50a14f`
-- yellow: `#986801`
-- blue: `#4078f2`
-- magenta: `#a626a4`
-- violet: `#b751b6`
-- cyan: `#0184bc`
-- variable: `#a626a4`
+## ⚙️ Configuração
+
+O `setup` é opcional. Se você não chamar, o tema usará os padrões abaixo:
+
+```lua
+require("doom-one").setup({
+  transparent = false, -- desabilita o fundo para transparência do terminal
+  background = "dark", -- "dark", "darker", "vibrant", "light"
+  colors = {}, -- sobrescreve cores da paleta
+  highlights = {}, -- sobrescreve grupos de destaque
+  styles = {
+    comments = { italic = true },
+    conditionals = { italic = true },
+    loops = {},
+    functions = {},
+    keywords = {},
+    strings = {},
+    variables = {},
+    numbers = {},
+    booleans = {},
+    properties = {},
+    types = {},
+    operators = {},
+  },
+  integrations = {
+    all = true, -- habilita todas as integrações
+    -- ou habilite individualmente:
+    -- telescope = true,
+    -- neotree = true,
+    -- ...
+  },
+})
+```
+
+## 🔌 Integrações
+
+Doom-One suporta nativamente uma vasta gama de plugins, incluindo:
+
+- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
+- [Nvim-Tree](https://github.com/nvim-tree/nvim-tree.lua)
+- [Neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
+- [Lualine](https://github.com/nvim-lualine/lualine.nvim)
+- [Bufferline](https://github.com/akinsho/bufferline.nvim)
+- [Noice](https://github.com/folke/noice.nvim)
+- [Trouble](https://github.com/folke/trouble.nvim)
+- [Which-Key](https://github.com/folke/which-key.nvim)
+- [Gitsigns](https://github.com/lewis6991/gitsigns.nvim)
+- [Indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
+- [Dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
+- [Nvim-notify](https://github.com/rcarriga/nvim-notify)
+- [Flash.nvim](https://github.com/folke/flash.nvim)
+- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
+- E muitos outros!
+
+### Lualine
+
+Para usar o tema no Lualine:
+
+```lua
+require('lualine').setup {
+  options = {
+    theme = 'doom-one', -- Ele detecta automaticamente se você estiver usando o colorscheme
+  }
+}
+```
+
+---
+
+<div align="center">
+  Feito com ❤️ inspirado pelo Doom Emacs e Catppuccin.
+</div>
