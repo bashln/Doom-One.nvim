@@ -20,8 +20,8 @@ M.colors = {
 
     grey = "#3f444a",
     red = "#ff6c6b",
-    orange = "#da8548",
-    green = "#98be65",
+    orange = "#a9a1e1",
+    green = "#51afef",
     teal = "#4db5bd",
     yellow = "#ecbe7b",
     blue = "#51afef",
@@ -50,8 +50,8 @@ M.colors = {
 
     grey = "#9ca0a4",
     red = "#e45649",
-    orange = "#da8548",
-    green = "#50a14f",
+    orange = "#b751b6",
+    green = "#4078f2",
     teal = "#4db5bd",
     yellow = "#986801",
     blue = "#4078f2",
