@@ -151,6 +151,7 @@ require("doom-one").setup({
 - magenta: `#c678dd`
 - violet: `#a9a1e1`
 - cyan: `#46D9FF`
+- variable: `#dcaeea`
 
 ## Paleta light
 
@@ -164,3 +165,4 @@ require("doom-one").setup({
 - magenta: `#a626a4`
 - violet: `#b751b6`
 - cyan: `#0184bc`
+- variable: `#a626a4`
