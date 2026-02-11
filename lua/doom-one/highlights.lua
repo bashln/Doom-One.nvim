@@ -17,7 +17,7 @@ function M.get(palette, opts)
     Number = { fg = palette.orange },
     Boolean = { fg = palette.orange },
     Float = { fg = palette.orange },
-    Identifier = { fg = palette.variable },
+    Identifier = { fg = palette.fg },
     Function = { fg = palette.magenta },
     Statement = { fg = palette.blue },
     Conditional = { fg = palette.blue },
@@ -99,12 +99,12 @@ function M.get(palette, opts)
     Removed = { fg = palette.red },
 
     -- TreeSitter: Identifiers & Variables
-    ["@variable"] = { fg = palette.variable },
+    ["@variable"] = { fg = palette.orange },
     ["@variable.builtin"] = { fg = palette.magenta },
-    ["@variable.parameter"] = { fg = palette.variable },
-    ["@variable.parameter.builtin"] = { fg = palette.variable },
-    ["@variable.member"] = { fg = palette.violet },
-    ["@property"] = { fg = palette.violet },
+    ["@variable.parameter"] = { fg = palette.orange },
+    ["@variable.parameter.builtin"] = { fg = palette.orange },
+    ["@variable.member"] = { fg = palette.fg },
+    ["@property"] = { fg = palette.fg },
 
     -- TreeSitter: Constants
     ["@constant"] = { link = "Constant" },
@@ -143,9 +143,9 @@ function M.get(palette, opts)
     ["@function.builtin"] = { fg = palette.magenta },
     ["@function.call"] = { fg = palette.magenta },
     ["@function.macro"] = { fg = palette.violet },
-    ["@function.method"] = { fg = palette.cyan },
-    ["@function.method.call"] = { fg = palette.cyan },
-    ["@constructor"] = { fg = palette.magenta },
+    ["@function.method"] = { fg = palette.magenta },
+    ["@function.method.call"] = { fg = palette.magenta },
+    ["@constructor"] = { fg = palette.blue },
     ["@operator"] = { link = "Operator" },
 
     -- TreeSitter: Keywords
@@ -181,7 +181,7 @@ function M.get(palette, opts)
 
     -- TreeSitter: Tags (HTML/JSX)
     ["@tag"] = { fg = palette.red },
-    ["@tag.attribute"] = { fg = palette.yellow },
+    ["@tag.attribute"] = { fg = palette.orange },
     ["@tag.delimiter"] = { fg = palette.base7 },
     ["@tag.builtin"] = { fg = palette.red },
 
@@ -295,14 +295,14 @@ function M.get(palette, opts)
     ["@type.rust"] = { fg = palette.cyan },
 
     -- Language-specific: TypeScript / TSX
-    ["@keyword.type.typescript"] = { fg = palette.magenta },
-    ["@constructor.typescript"] = { fg = palette.magenta },
-    ["@constructor.tsx"] = { fg = palette.magenta },
-    ["@tag.attribute.tsx"] = { fg = palette.magenta, italic = true },
+    ["@keyword.type.typescript"] = { fg = palette.yellow },
+    ["@constructor.typescript"] = { fg = palette.blue },
+    ["@constructor.tsx"] = { fg = palette.blue },
+    ["@tag.attribute.tsx"] = { fg = palette.orange, italic = true },
 
     -- Language-specific: CSS
     ["@number.css"] = { fg = palette.cyan },
-    ["@property.css"] = { fg = palette.orange },
+    ["@property.css"] = { fg = palette.green },
     ["@property.class.css"] = { fg = palette.yellow },
     ["@property.id.css"] = { fg = palette.blue },
     ["@type.tag.css"] = { fg = palette.magenta },
