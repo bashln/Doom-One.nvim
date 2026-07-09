@@ -45,19 +45,28 @@
 ### [lazy.nvim](https://github.com/folke/lazy.nvim) (Recomendado)
 
 ```lua
--- No seu arquivo de plugins (ex: lua/plugins.lua ou lazy-lock.json)
 return {
-  {
-    "bashln/Doom-One.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      -- Configurações aqui (veja seção "Configuração" abaixo)
-    },
-    config = function(_, opts)
-      require("doom-one").setup(opts)
-      vim.cmd.colorscheme("doom-one")
-    end,
+  "bashln/Doom-One.nvim",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require("doom-one").setup() -- opcional, veja ⚙️ Configuração
+    vim.cmd.colorscheme("doom-one")
+  end,
+}
+```
+
+Com opções:
+
+```lua
+return {
+  "bashln/Doom-One.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {
+    background = "dark", -- "dark" | "light"
+    transparent = false,
+    -- ... veja ⚙️ Configuração para todas as opções
   },
 }
 ```
@@ -93,7 +102,7 @@ O `setup` é **opcional**. Se você não chamar, o tema usará os padrões abaix
 ```lua
 require("doom-one").setup({
   transparent = false, -- desabilita o fundo para transparência do terminal
-  background = "dark", -- "dark", "darker", "light"
+  background = nil, -- "dark", "darker", "light" (nil = usa vim.o.background)
   colors = {}, -- sobrescreve cores da paleta
   highlights = {}, -- sobrescreve grupos de destaque
   styles = {
@@ -128,7 +137,7 @@ require("doom-one").setup({
 - **Valores**: `true` | `false`
 
 #### `background` (string)
-- **Padrão**: `nil` (usa `vim.o.background`)
+- **Padrão**: `nil` (herda `vim.o.background`)
 - **Descrição**: Define a variante do tema
 - **Valores**: `"dark"` | `"darker"` | `"light"`
 

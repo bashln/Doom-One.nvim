@@ -92,7 +92,7 @@ M.colors = {
     violet = "#b751b6",
     cyan = "#0184bc",
     dark_cyan = "#005478",
-    variable = "#a626a4",
+    variable = "#6a1868",
   },
 }
 
