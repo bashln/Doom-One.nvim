@@ -44,6 +44,25 @@
 
 ### [lazy.nvim](https://github.com/folke/lazy.nvim) (Recomendado)
 
+Se você usa **LazyVim**, o colorscheme é ativado pelo próprio template. Basta passar as opções no `opts`:
+
+```lua
+return {
+  "bashln/Doom-One.nvim",
+  lazy = false,
+  priority = 1000,
+  opts = {
+    transparent = false,
+    -- veja ⚙️ Configuração para todas as opções
+  },
+}
+```
+
+> `opts` é automaticamente passado para `require("doom-one").setup(opts)` pelo lazy.nvim.
+> Não use `require("doom-one").setup()` dentro de `opts` — o módulo ainda não existe nesse momento.
+
+Se **não** usa LazyVim, use `config` para chamar o setup e o colorscheme manualmente:
+
 ```lua
 return {
   "bashln/Doom-One.nvim",
@@ -53,21 +72,6 @@ return {
     require("doom-one").setup() -- opcional, veja ⚙️ Configuração
     vim.cmd.colorscheme("doom-one")
   end,
-}
-```
-
-Com opções:
-
-```lua
-return {
-  "bashln/Doom-One.nvim",
-  lazy = false,
-  priority = 1000,
-  opts = {
-    background = "dark", -- "dark" | "light"
-    transparent = false,
-    -- ... veja ⚙️ Configuração para todas as opções
-  },
 }
 ```
 
@@ -96,6 +100,8 @@ EOF
 ```
 
 ## ⚙️ Configuração
+
+> **LazyVim**: passe as opções direto no `opts = {}` (veja Instalação). O lazy.nvim chama `require("doom-one").setup(opts)` automaticamente.
 
 O `setup` é **opcional**. Se você não chamar, o tema usará os padrões abaixo com todas as integrações habilitadas:
 
@@ -147,26 +153,26 @@ require("doom-one").setup({
 
 **Cores disponíveis na paleta:**
 
-| Cor | Descrição | Padrão (dark) |
-|-----|-----------|---------------|
-| `bg` | Fundo principal | `#282c34` |
-| `fg` | Texto principal | `#bbc2cf` |
-| `bg_alt` | Fundo alternativo | `#21242b` |
-| `fg_alt` | Texto alternativo | `#5b6268` |
-| `base0` - `base8` | Cores base (0-8) | varies |
-| `grey` | Cinza | `#3f444a` |
-| `red` | Vermelho | `#ff6c6b` |
-| `orange` | Laranja | `#da8548` |
-| `green` | Verde | `#98be65` |
-| `teal` | Verde-azulado | `#4db5bd` |
-| `yellow` | Amarelo | `#ecbe7b` |
-| `blue` | Azul | `#51afef` |
-| `dark_blue` | Azul escuro | `#2257a0` |
-| `magenta` | Magenta | `#c678dd` |
-| `violet` | Violeta | `#a9a1e1` |
-| `cyan` | Ciano | `#46d9ff` |
-| `dark_cyan` | Ciano escuro | `#5699af` |
-| `variable` | Variável | `#dcaeea` |
+| Cor | Descrição | Dark | Light |
+|-----|-----------|------|-------|
+| `bg` | Fundo principal | `#282c34` | `#fafafa` |
+| `fg` | Texto principal | `#bbc2cf` | `#383a42` |
+| `bg_alt` | Fundo alternativo | `#21242b` | `#f0f0f0` |
+| `fg_alt` | Texto alternativo | `#5b6268` | `#c6c7c7` |
+| `base0` - `base8` | Cores base (0-8) | escuros | claros |
+| `grey` | Cinza | `#3f444a` | `#9ca0a4` |
+| `red` | Vermelho | `#ff6c6b` | `#e45649` |
+| `orange` | Laranja | `#da8548` | `#da8548` |
+| `green` | Verde | `#98be65` | `#50a14f` |
+| `teal` | Verde-azulado | `#4db5bd` | `#4db5bd` |
+| `yellow` | Amarelo | `#ecbe7b` | `#986801` |
+| `blue` | Azul | `#51afef` | `#4078f2` |
+| `dark_blue` | Azul escuro | `#2257a0` | `#a0bcf8` |
+| `magenta` | Magenta | `#c678dd` | `#a626a4` |
+| `violet` | Violeta | `#a9a1e1` | `#b751b6` |
+| `cyan` | Ciano | `#46d9ff` | `#0184bc` |
+| `dark_cyan` | Ciano escuro | `#5699af` | `#005478` |
+| `variable` | Variável | `#dcaeea` | `#6a1868` |
 
 **Exemplo de override de cores:**
 ```lua
@@ -307,26 +313,6 @@ O healthcheck verifica:
 - Cores do palette
 - Colorscheme ativo
 - Disponibilidade dos plugins integrados
-
-## 🔌 Integrações
-
-Doom-One suporta nativamente uma vasta gama de plugins, incluindo:
-
-- [Telescope](https://github.com/nvim-telescope/telescope.nvim)
-- [Nvim-Tree](https://github.com/nvim-tree/nvim-tree.lua)
-- [Neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim)
-- [Lualine](https://github.com/nvim-lualine/lualine.nvim)
-- [Bufferline](https://github.com/akinsho/bufferline.nvim)
-- [Noice](https://github.com/folke/noice.nvim)
-- [Trouble](https://github.com/folke/trouble.nvim)
-- [Which-Key](https://github.com/folke/which-key.nvim)
-- [Gitsigns](https://github.com/lewis6991/gitsigns.nvim)
-- [Indent-blankline](https://github.com/lukas-reineke/indent-blankline.nvim)
-- [Dashboard-nvim](https://github.com/nvimdev/dashboard-nvim)
-- [Nvim-notify](https://github.com/rcarriga/nvim-notify)
-- [Flash.nvim](https://github.com/folke/flash.nvim)
-- [Treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
-- E muitos outros!
 
 ### Lualine
 
